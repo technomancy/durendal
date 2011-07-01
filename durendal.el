@@ -90,7 +90,7 @@
       (error "Not in a Leiningen project."))
     (shell-command (format "cd %s && lein swank %s &" root port)
                    "*lein-swank*")
-    (message "Launching lein swank on %s..." durendal-port)
+    (message "Launching lein swank on %s..." port)
     (set-process-filter (get-buffer-process "*lein-swank*")
                         (lambda (process output)
                           (when (string-match "Connection opened on" output)
