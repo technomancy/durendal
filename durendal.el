@@ -95,7 +95,8 @@
                         (lambda (process output)
                           (when (string-match "Connection opened on" output)
                             (slime-connect "localhost" port)
-                            (slime-set-default-directory root)
+                            (with-current-buffer (slime-output-buffer t)
+                              (setq default-directory root))
                             (set-process-filter process nil))))
     (message "Starting swank server...")))
 
